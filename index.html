@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus | Facebook Automation</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+                <span class="logo-text">Nexus</span>
+            </div>
+            
+            <div class="nav-items">
+                <a href="#" class="nav-item active" data-tab="dashboard">
+                    <span class="nav-icon">📊</span>
+                    Dashboard
+                </a>
+                <a href="#" class="nav-item" data-tab="automation">
+                    <span class="nav-icon">🤖</span>
+                    Automation
+                </a>
+                <a href="#" class="nav-item" data-tab="sessions">
+                    <span class="nav-icon">🔐</span>
+                    Sessions
+                </a>
+                <a href="#" class="nav-item" data-tab="analytics">
+                    <span class="nav-icon">📈</span>
+                    Analytics
+                </a>
+            </div>
+
+            <div class="user-section">
+                <div class="user-avatar">U</div>
+                <div class="user-info">
+                    <div class="user-name">User</div>
+                    <div class="user-status">Ready</div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Tab -->
+            <div class="tab-content active" id="dashboard-tab">
+                <div class="header">
+                    <h1>Dashboard</h1>
+                    <div class="header-actions">
+                        <button class="btn-icon" title="Settings">⚙️</button>
+                        <button class="btn-icon" title="Notifications">🔔</button>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🔄</div>
+                        <div class="stat-info">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Active Sessions</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📤</div>
+                        <div class="stat-info">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Shares Today</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <div class="stat-value">0%</div>
+                            <div class="stat-label">Success Rate</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-info">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Avg. Time</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Quick Actions</h3>
+                        </div>
+                        <div class="card-content">
+                            <button class="action-btn" id="quickValidate">
+                                <span class="action-icon">🔍</span>
+                                Validate Session
+                            </button>
+                            <button class="action-btn" id="quickShare">
+                                <span class="action-icon">🚀</span>
+                                Start Sharing
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-icon">📋</span>
+                                View Logs
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Recent Activity</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon">🔍</div>
+                                    <div class="activity-info">
+                                        <div class="activity-text">Session validated successfully</div>
+                                        <div class="activity-time">2 minutes ago</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">⚡</div>
+                                    <div class="activity-info">
+                                        <div class="activity-text">System initialized</div>
+                                        <div class="activity-time">5 minutes ago</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Automation Tab -->
+            <div class="tab-content" id="automation-tab">
+                <div class="header">
+                    <h1>Automation</h1>
+                    <div class="header-badge">BETA</div>
+                </div>
+
+                <div class="automation-grid">
+                    <div class="card wide">
+                        <div class="card-header">
+                            <h3>Share Configuration</h3>
+                            <div class="card-actions">
+                                <button class="btn-sm" id="saveConfig">Save</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="form-section">
+                                <label class="form-label">AppState Session</label>
+                                <textarea class="form-textarea" id="appstateInput" placeholder="Paste your AppState JSON here..." rows="6"></textarea>
+                                <div class="form-hint">Ensure your AppState is valid and recent</div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Message Content</label>
+                                    <textarea class="form-textarea" id="messageInput" placeholder="Enter your post message..." rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Target URL (Optional)</label>
+                                    <input type="url" class="form-input" id="urlInput" placeholder="https://example.com">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Share Count</label>
+                                    <input type="number" class="form-input" id="countInput" value="5" min="1" max="50">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Delay (Seconds)</label>
+                                    <input type="number" class="form-input" id="delayInput" value="15" min="5" max="300">
+                                </div>
+                            </div>
+
+                            <div class="action-bar">
+                                <button class="btn-primary" id="startAutomation">
+                                    <span class="btn-icon">🚀</span>
+                                    Start Automation
+                                </button>
+                                <button class="btn-secondary" id="stopAutomation" disabled>
+                                    <span class="btn-icon">⏹️</span>
+                                    Stop
+                                </button>
+                                <div class="status-indicator" id="automationStatus">
+                                    <div class="status-dot"></div>
+                                    Idle
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Live Monitor</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="monitor">
+                                <div class="monitor-stats">
+                                    <div class="monitor-stat">
+                                        <div class="monitor-value" id="currentShares">0</div>
+                                        <div class="monitor-label">Current</div>
+                                    </div>
+                                    <div class="monitor-stat">
+                                        <div class="monitor-value" id="successfulShares">0</div>
+                                        <div class="monitor-label">Success</div>
+                                    </div>
+                                    <div class="monitor-stat">
+                                        <div class="monitor-value" id="failedShares">0</div>
+                                        <div class="monitor-label">Failed</div>
+                                    </div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sessions Tab -->
+            <div class="tab-content" id="sessions-tab">
+                <div class="header">
+                    <h1>Sessions</h1>
+                    <button class="btn-primary">
+                        <span class="btn-icon">➕</span>
+                        New Session
+                    </button>
+                </div>
+                <!-- Sessions content would go here -->
+            </div>
+
+            <!-- Analytics Tab -->
+            <div class="tab-content" id="analytics-tab">
+                <div class="header">
+                    <h1>Analytics</h1>
+                    <!-- Analytics content would go here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts/app.js"></script>
+</body>
+                  </html>
